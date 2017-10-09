@@ -1,0 +1,21 @@
+{
+  "name": "node-toolkit",
+  "version": "0.1.0",
+  "description": "Helpers para crear APIs con NodeJS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/codium/node-toolkit.git"
+  },
+  "author": "codiumsa",
+  "license": "ISC",
+  "homepage": "https://gitlab.com/codium/node-toolkit#README",
+  "dependencies": {
+    "koa-jwt": "^3.2.2",
+    "package.json": "^2.0.1",
+    "sequelize": "^4.4.2"
+  }
+}

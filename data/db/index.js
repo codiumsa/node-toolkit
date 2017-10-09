@@ -1,0 +1,1 @@
+exports.sequelize = require('./sequelize');
