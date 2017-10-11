@@ -1,8 +1,7 @@
-const container = require('../utils/di-container');
 const Boom = require('boom');
 var jwt = require('jsonwebtoken');
 
-const authorizationMiddleware = (requiredParams) => {
+const authorizationMiddleware = userPermFinder => requiredParams => {
     return async (ctx, next) => {
         console.log('Se solicitan los permisos', requiredParams);
         console.log('Se ha encontrado en el header', JSON.stringify(ctx.headers));
@@ -17,9 +16,8 @@ const authorizationMiddleware = (requiredParams) => {
                 supervisorPerms = [];
             }
         }
-        const permFinder = container.resolve('permissionsFinder');
         const { user } = ctx.state.loginData;
-        let userPerms = await permFinder(user.id);
+        let userPerms = await userPermFinder(user.id);
         userPerms = userPerms.map(perm => perm.nombre);
         if (supervisorPerms) {
             userPerms = [...userPerms, ...supervisorPerms];
