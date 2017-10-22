@@ -27,8 +27,8 @@ fs
     });
 
 Object.keys(models).forEach(function (modelName) {
-    if (models[modelName].options.hasOwnProperty('associate')) {
-        models[modelName].options.associate(models);
+    if (models[modelName].hasOwnProperty('associate')) {
+        models[modelName].associate(models);
     }
 });
 
