@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 var appDir = path.dirname(require.main.filename);
 const Sequelize = require('sequelize');
-const nconf = require.main.require(appDir + "/config");
+const nconf = require.main.require(appDir + '/config');
 
 const username = nconf.get('database:user');
 const password = nconf.get('database:password');

@@ -2,6 +2,9 @@
 
 Todas las notas importantes para cada release se especificaran aqui.
 
+## 0.2.2 / 2017-10-27
+- Bugfix en setup de sequelize.
+
 ## 0.2.1 / 2017-10-26
 - Bugfix en setup de sequelize.
 
