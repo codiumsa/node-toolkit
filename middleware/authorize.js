@@ -1,5 +1,6 @@
 const Boom = require('boom');
-var jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
+const path = require('path');
 
 var appDir = path.dirname(require.main.filename);
 const nconf = require.main.require(appDir + '/config');
