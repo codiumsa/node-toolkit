@@ -2,7 +2,7 @@
 /**
  * Parsea datos de filtros, order y paging que se pueden encontrar en el request.
  * Los params correspondientes a filtros deben seguir el patron:
- * by_path_sequelizeCondition=value
+ * by_path-sequelizeCondition=value
  * Los params correspondientes a orders deben seguir el patron:
  * orderBy_path=ASC o orderBy_path=DESC
  * Los params de paginacion son page y pageSize
@@ -42,17 +42,34 @@ const parse = async (ctx, next) => {
 }
 
 const parseFilter = (key, value) => {
-  const filter = {};
-  const splitted = key.split("_");
-  const filterObject = {};
-  filter[splitted[1]] = filterObject;
-  if (splitted.length > 2) {
-    filterObject[splitted[2]] = value;
-  } else {
-    //Si no hay una condicion especifica, usamos eq como default
-    filterObject['$eq'] = value;
-  }
-  return filter;
+    const filter = {};
+    const filterObject = {};
+    var filterParsedObject = parseFilterMethod(key);
+    if(filterParsedObject.hasOwnProperty("condition")) {
+        filterObject[filterParsedObject["condition"]] = '%' + value + '%';
+    } else {
+        //Si no hay una condicion especifica, usamos eq como default
+        filterObject['$eq'] = value;
+    }
+
+    filter[filterParsedObject["field"]] = filterObject;
+    return filter;
+}
+
+function parseFilterMethod(filterString) {
+	var filter = {};
+	//separamos el by_ del resto
+	if(filterString.split("_").length > 0) {
+		var auxFields = filterString.substring(filterString.indexOf("_") + 1);
+		if(auxFields.indexOf("-") == -1) {
+			filter["field"] = auxFields;
+		} else {
+			var arrayParse = auxFields.split("-");
+			filter["field"] = arrayParse[0];
+			filter["condition"] = arrayParse[1];
+		}
+	}
+	return filter;
 }
 
 const parseOrder = (key, value) => {
