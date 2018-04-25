@@ -1,0 +1,9 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "workbench.editor.enablePreview": false,
+  "editor.tabSize": 2,
+  // When opening a file, `editor.tabSize` and `editor.insertSpaces` will be detected based on the file contents.
+  "editor.detectIndentation": false,
+  "eslint.run": "onSave",
+  "prettier.singleQuote": true
+}
