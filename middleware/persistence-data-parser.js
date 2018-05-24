@@ -34,7 +34,10 @@ const parse = async (ctx, next) => {
 
   ctx.query.filters = filters;
   ctx.query.orders = orders;
-  ctx.query.paging = pagingInfo;
+  //ctx.query.pageAll evita que se limite el listado
+  if(!ctx.query.pageAll) {
+    ctx.query.paging = pagingInfo;
+  }
   console.log("Filters", filters);
   console.log("Orders", orders);
   console.log("Paging", pagingInfo);
