@@ -1,6 +1,6 @@
 {
   "name": "node-toolkit",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Helpers para crear APIs con NodeJS",
   "main": "app.js",
   "scripts": {
