@@ -47,7 +47,6 @@ const constructSettings = (exports.constructSettings = (
   if (paging) {
     addPagingToSettings(settings, baseModel, paging);
   }
-  settings.subQuery = false;
   return settings;
 });
 
@@ -280,7 +279,7 @@ const addPagingToSettings = (exports.addPagingToSettings = (
   const offset = (page - 1) * pageSize;
   const limit = pageSize;
   settings.offset = offset;
-  settings.limit = limit;
+  if (!settings.noLimit) settings.limit = limit;  //el parser genera un LIMIT pero es utilizado sobre el total registros recien en el cliente
 });
 
 /**

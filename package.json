@@ -9,11 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/codium/node-toolkit.git"
+    "url": "https://github.com/codiumsa/node-toolkit.git"
   },
   "author": "codiumsa",
   "license": "ISC",
-  "homepage": "https://gitlab.com/codium/node-toolkit#README",
+  "homepage": "https://github.com/codiumsa/node-toolkit",
   "dependencies": {
     "koa-jwt": "^3.2.2",
     "package.json": "^2.0.1",
