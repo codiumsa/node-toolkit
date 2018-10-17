@@ -278,8 +278,11 @@ const addPagingToSettings = (exports.addPagingToSettings = (
 
   const offset = (page - 1) * pageSize;
   const limit = pageSize;
-  settings.offset = offset;
-  if (!settings.noLimit) settings.limit = limit;  //el parser genera un LIMIT pero es utilizado sobre el total registros recien en el cliente
+  if (!settings.noLimit) {
+    //el parser genera un LIMIT y un OFFSET pero es utilizado sobre el total registros recien en el cliente
+    settings.limit = limit;
+    settings.offset = offset;
+  }
 });
 
 /**
