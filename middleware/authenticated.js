@@ -13,11 +13,10 @@
  * @since 0.1.0
  */
 const jwt = require('koa-jwt');
-const path = require('path');
-var appDir = path.dirname(require.main.filename);
+const utils = require('../utils');
 
-const nconf = require.main.require(appDir + '/config');
-
+const { appDir } = utils.pathUtils;
+const nconf = require.main.require(`${appDir}/config`);
 
 module.exports = jwt({
   secret: nconf.get('jwt:secret'),

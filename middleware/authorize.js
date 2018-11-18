@@ -2,9 +2,6 @@ const Boom = require('boom');
 const jwt = require('jsonwebtoken');
 const path = require('path');
 
-var appDir = path.dirname(require.main.filename);
-const nconf = require.main.require(appDir + '/config');
-
 const authorizationMiddleware = userPermFinder => requiredParams => {
   return async (ctx, next) => {
     console.log('Se solicitan los permisos', requiredParams);
