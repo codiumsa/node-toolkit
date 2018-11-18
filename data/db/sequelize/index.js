@@ -1,8 +1,11 @@
 const fs = require('fs');
 const path = require('path');
-var appDir = path.dirname(require.main.filename);
 const Sequelize = require('sequelize');
-const nconf = require.main.require(appDir + '/config');
+
+const utils = require('../../../utils');
+
+const { appDir } = utils.pathUtils;
+const nconf = require.main.require(`${appDir}/config`);
 
 const username = nconf.get('database:user');
 const password = nconf.get('database:password');
@@ -14,16 +17,14 @@ const models = {};
 
 
 fs
-  .readdirSync(appDir + '/data/models')
-  .filter(function (file) {
-    return (file.indexOf('.') !== 0) && (file !== 'index.js');
-  })
-  .forEach(function (file) {
-    var model = client.import(path.join(appDir + '/data/models', file));
+  .readdirSync(`${appDir}/data/models`)
+  .filter(file => (file.indexOf('.') !== 0) && (file !== 'index.js'))
+  .forEach((file) => {
+    const model = client.import(path.join(`${appDir}/data/models`, file));
     models[model.name] = model;
   });
 
-Object.keys(models).forEach(function (modelName) {
+Object.keys(models).forEach((modelName) => {
   if (models[modelName].hasOwnProperty('associate')) {
     models[modelName].associate(models);
   }
