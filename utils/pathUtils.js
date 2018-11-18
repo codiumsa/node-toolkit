@@ -9,8 +9,9 @@ const path = require('path');
  */
 function getAppDir() {
   // Se controla si el módulo está siendo utilizado como dependencia.
-  if(__dirname.includes('/node_modules/node-toolkit/')){
-    return __dirname.split('/node_modules/node-toolkit/')[0];
+  const pattern = `${path.sep}node_modules${path.sep}node-toolkit${path.sep}`;
+  if(__dirname.includes(pattern)){
+    return __dirname.split(pattern)[0];
   }
   return path.dirname(require.main.filename);
 }
