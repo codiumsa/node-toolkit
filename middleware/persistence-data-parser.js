@@ -48,7 +48,7 @@ const parseFilter = (key, value) => {
     const filter = {};
     const filterObject = {};
     var filterParsedObject = parseFilterMethod(key);
-    if(filterParsedObject.hasOwnProperty("condition")) {
+    if(filterParsedObject.hasOwnProperty("condition") && filterParsedObject["condition"] !== '$eq') {
         filterObject[filterParsedObject["condition"]] = '%' + value + '%';
     } else {
         //Si no hay una condicion especifica, usamos eq como default
