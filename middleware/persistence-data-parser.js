@@ -49,7 +49,7 @@ const parseFilter = (key, value) => {
     const filterObject = {};
     var filterParsedObject = parseFilterMethod(key);
     if(filterParsedObject.hasOwnProperty("condition")) {
-        filterObject[filterParsedObject["condition"]] = '%' + value + '%';
+        filterObject[filterParsedObject["condition"]] = filterParsedObject["condition"] === '$like' ? `%${value}%` : value;
     } else {
         //Si no hay una condicion especifica, usamos eq como default
         filterObject['$eq'] = value;
