@@ -1,3 +1,4 @@
+const nconf = require.main.require(appDir + '/config');
 const { Sequelize } = require('../../db').sequelize;
 
 /**
@@ -162,9 +163,10 @@ const constructGeneralFilter = (exports.constructGeneralFilter = (
     if (path.split('.').length === 1) {
       path = `${baseModel.name}.${path}`;
     }
+    const likeCondition = nconf.get('database:options:dialect') === 'postgres' ? { $iLike: `%${value}%` } : { $like: `%${value}%` };
     const condition = Sequelize.where(
       Sequelize.cast(Sequelize.col(getAliasedPath(path, baseModel)), 'VARCHAR'),
-      { $iLike: `%${value}%` }
+      likeCondition
     );
     or.push(condition);
   }
