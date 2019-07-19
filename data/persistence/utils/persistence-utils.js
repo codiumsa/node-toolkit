@@ -3,7 +3,8 @@ const appDir = path.dirname(require.main.filename);
 const nconf = require.main.require(appDir + '/config');
 // const { Sequelize } = require('../../db').sequelize;
 
-const getPersistenceUtils = (Sequelize) => {
+const getPersistenceUtils = (sequelize) => {
+  const { Sequelize } = sequelize;
   /**
    * Construye los settings de sequelize para filtros, ordenamiento y filtro general pasados
    * como parametro. Se encarga de inicializar las estructuras where, include y order necesarios
