@@ -374,7 +374,6 @@ const getPersistenceUtils = (Sequelize) => {
     addFiltersToSettings,
     addOrderToSettings,
     addPagingToSettings,
-    getAttributeSettings,
     addIncludeToSetting,
     constructPathsToCompare,
     constructExtendedPathsToCompare,
