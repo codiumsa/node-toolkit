@@ -52,7 +52,7 @@ const getPersistenceUtils = (Sequelize) => {
       addPagingToSettings(settings, baseModel, paging);
     }
     return settings;
-  });
+  };
 
   /**
    * Construye el path teniendo en cuenta los atributos aliased. Por ejemplo, si le pasamos
