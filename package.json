@@ -17,7 +17,7 @@
   "dependencies": {
     "koa-jwt": "^3.2.2",
     "package.json": "^2.0.1",
-    "sequelize": "^4.4.2"
+    "sequelize": "^5.15.1"
   },
   "devDependencies": {
     "commitizen": "^2.9.6",
