@@ -15,7 +15,7 @@
   "license": "ISC",
   "homepage": "https://github.com/codiumsa/node-toolkit",
   "dependencies": {
-    "koa-jwt": "^3.2.2",
+    "koa-jwt": "^4.0.4",
     "package.json": "^2.0.1",
     "sequelize": "^4.4.2"
   },
